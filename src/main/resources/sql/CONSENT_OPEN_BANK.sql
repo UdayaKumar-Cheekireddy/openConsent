@@ -2,28 +2,23 @@ DROP TABLE IF EXISTS BANK_CONSENT_PERM;
 
 DROP TABLE IF EXISTS BANK_CONSENT_DATA;
 
-CREATE TABLE BANK_CONSENT_DATA (
-   Id INT AUTO_INCREMENT PRIMARY KEY,
-   ConsentId VARCHAR(50) NOT NULL UNIQUE,
-   StatusVal VARCHAR(20) NOT NULL,
-   StatusUpdateDateTime TIMESTAMP,
-   CreationDateTime TIMESTAMP,
-   ExpirationDateTime TIMESTAMP,
-   TransactionFromDateTime TIMESTAMP,
-   TransactionToDateTime TIMESTAMP
-);
+CREATE TABLE `bank_consent_data` (
+  `consent_id` varchar(255) NOT NULL,
+  `creation_date_time` datetime DEFAULT NULL,
+  `expiration_date_time` datetime DEFAULT NULL,
+  `status_val` varchar(255) DEFAULT NULL,
+  `status_update_date_time` datetime DEFAULT NULL,
+  `transaction_from_date_time` datetime DEFAULT NULL,
+  `transaction_to_date_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`consent_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `bank_consent_perm` (
+  `pid` int(11) NOT NULL AUTO_INCREMENT,
+  `pname` varchar(255) NOT NULL,
+  `consent_id` varchar(255) NOT NULL,
+  PRIMARY KEY (`pid`),
+  KEY `FK_CONSENT_ID` (`consent_id`),
+  CONSTRAINT `FK_CONSENT_ID` FOREIGN KEY (`consent_id`) REFERENCES `bank_consent_data` (`consent_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE BANK_CONSENT_PERM (
- PId INT AUTO_INCREMENT PRIMARY KEY,
- PName VARCHAR(25),
- Id INT NOT NULL,
- KEY `Id` (`Id`),
-CONSTRAINT `F_Id` FOREIGN KEY (`Id`) REFERENCES BANK_CONSENT_DATA(`Id`)
-);
-
-commit;
-
-SHOW TABLES;
-
-SELECT * FROM BANK_CONSENT_PERM;

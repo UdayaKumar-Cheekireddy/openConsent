@@ -1,13 +1,18 @@
 package com.open.bank.consent.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 
 public class OBReadConsentResponse implements Serializable {
 
+    @JsonProperty("Data")
     private CData data;
 
+    @JsonProperty("Risk")
     private CRisk risk;
 
+    @JsonProperty("Meta")
     private CMeta meta;
 
     public CData getData() {

@@ -1,5 +1,7 @@
 package com.open.bank.consent.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -7,20 +9,28 @@ import java.util.List;
 
 public class CData implements Serializable {
 
+    @JsonProperty("ConsentId")
     private String consentId;
 
+    @JsonProperty("Status")
     private String status;
 
+    @JsonProperty("StatusUpdateDateTime")
     private Date statusUpdateDateTime;
 
+    @JsonProperty("CreationDateTime")
     private Date creationDateTime;
 
+    @JsonProperty("ExpirationDateTime")
     private Date expirationDateTime;
 
+    @JsonProperty("TransactionFromDateTime")
     private Date transactionFromDateTime;
 
+    @JsonProperty("TransactionToDateTime")
     private Date transactionToDateTime;
 
+    @JsonProperty("Permissions")
     private List<String> permissions;
 
     public String getConsentId() {

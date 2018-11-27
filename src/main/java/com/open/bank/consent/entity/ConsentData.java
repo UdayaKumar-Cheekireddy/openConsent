@@ -14,12 +14,13 @@ import java.util.List;
 @Table(name = "BANK_CONSENT_DATA")
 public class ConsentData implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "Id")
+//    private int id;
 
-    @NotNull
-    @Column(name = "ConsentId")
+    @Id
+    @Column(name = "ConsentId",unique = true,nullable = false)
     private String consentId;
 
     @Column(name="StatusVal")
@@ -43,13 +44,13 @@ public class ConsentData implements Serializable {
     @OneToMany(mappedBy = "consentData",cascade = CascadeType.ALL)
     private List<ConsentPermissions> permissions;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public String getConsentId() {
         return consentId;

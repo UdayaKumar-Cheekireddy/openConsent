@@ -16,7 +16,7 @@ public class ConsentPermissions implements Serializable {
     private String pName;
 
     @ManyToOne
-    @JoinColumn(name="Id", nullable=false)
+    @JoinColumn(name="consentId", nullable=false)
     private ConsentData consentData;
 
 
